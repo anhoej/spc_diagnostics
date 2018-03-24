@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = FALSE,
                       cache = TRUE,
                       message = FALSE,
                       warning = FALSE)
-load('spc_diagnostics_plots.RData')
+load('data/spc_diagnostics_plots.RData')
 ```
 
 
@@ -91,6 +91,10 @@ Jacob Anhøj
 Centre of Diagnostic Investigation, Rigshospitalet, University of Copenhagen, Denmark
 
 E-mail: jacob@anhoej.net
+
+Tore Wenzel-Larsen
+
+Centre for violence and traumatic stress studies, Oslo, Norway
 
 Short title: Diagnostic value of control chart rules for time series data
 

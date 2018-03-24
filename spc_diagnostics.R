@@ -20,7 +20,7 @@
 library(tidyverse)
 
 # Names of files to hold data
-fileprefix <- 'spc_diagnostics'
+fileprefix <- 'data/spc_diagnostics'
 datafile   <- paste0(fileprefix, '_data', '.rds')
 plotfile   <- paste0(fileprefix, '_plots', '.RData')
 
