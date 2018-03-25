@@ -208,7 +208,6 @@ p2 <- ggplot(fp, aes(n, p, colour = Rule)) +
   labs(title = 'False Alarm Rates of Control Chart Rules',
        y = 'Probability of false alarm',
        x = 'Number of data points in chart') +
-  ggtitle('') +
   scale_colour_brewer(palette = "Dark2")
 
 

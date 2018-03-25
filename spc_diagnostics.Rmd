@@ -88,13 +88,11 @@ p3 <- p3 + ggplot2::labs(title = NULL)
 
 Jacob Anhøj
 
-Centre of Diagnostic Investigation, Rigshospitalet, University of Copenhagen, Denmark
+Centre of Diagnostic Investigation, Rigshospitalet, University of Copenhagen, Denmark, jacob@anhoej.net
 
-E-mail: jacob@anhoej.net
+<!-- Tore Wenzel-Larsen -->
 
-Tore Wenzel-Larsen
-
-Centre for violence and traumatic stress studies, Oslo, Norway
+<!-- Centre for violence and traumatic stress studies, Oslo, Norway, tore.wentzellarsen@gmail.com -->
 
 Short title: Diagnostic value of control chart rules for time series data
 
@@ -102,13 +100,13 @@ Revision date: `r Sys.Date()`
 
 # Abstract
 
-The aim of this study was to quantify and compare the diagnostic value of statistical process control chart rules for detection of non-random variation in time series data in order to make recommendations for their application under different conditions.
+The aim of this study is to quantify and compare the diagnostic value of The Western Electric statistical process control chart rules for detection of non-random variation in time series data in order to make recommendations for their application under different conditions.
 
 Control charts are point-and-line graphs showing a measure over time and employing statistical tests for identification of non-random variation.
 
 Numerous tests have been developed to identify non-random variation. In this study, I investigate the diagnostic value of the four Western Electric Rules and the two Anhoej rules using simulated time series data with and without non-random variation introduced as shifts in process centre over time. The primary outcome is likelihood ratios of combined tests. Likelihood ratios are useful measures of a test's ability to discriminate between the true presence or absence of a specific condition.
 
-This study confirmed that likelihood ratios are useful measures of the diagnostic value of control chart rules. The Western Electric rules 1-4 combined perform very well with short data series (< 20 data points). For longer data series, the Anhoej rules alone or in combination with the WE rule 1 may be a better choice. Most importantly, the choice of which and how many rules to apply in a given situation should be made deliberately depending on the specific purpose of the analysis.
+This study confirms that likelihood ratios are useful measures of the diagnostic value of control chart rules. The Western Electric rules 1-4 combined perform very well with short data series (< 20 data points). For longer data series, the Anhoej rules alone or in combination with the WE rule 1 may be a better choice. Most importantly, the choice of which and how many rules to apply in a given situation should be made deliberately depending on the specific purpose of the analysis.
 
 # Introduction
 
@@ -116,15 +114,15 @@ Over the past decade or so, the term "improvement science" has gained attention 
 
 In a systematic review The Health Foundation concludes that: "Improvement science is about finding out how to improve and make changes in the most effective way. It is about systematically examining the methods and factors that best work to facilitate quality improvement" [1].
 
-Following this, change and improvement are closely related in that improvement is always the result of change. However, not all changes result in improvement. In order to know that improvement is happening, we must be able to measure the quality characteristics of the processes we are trying to improve. As improvement always happens over time, time is an essential part of the analysis, and since measurement is subject to variation whether or not improvement is happening, the aim of the analysis is to discriminate between naturally occurring variation in data over time (noise) and variation that is the result of changes to a process (signal).
+Following this, change and improvement are closely related in that improvement is always the result of change. However, not all changes result in improvement. In order to know that improvement is happening, we must be able to measure the quality characteristics of the processes we are trying to improve. As improvement always happens over time, time is an essential part of the analysis, and since measurement is subject to variation whether or not improvement is happening, the aim of the analysis is to discriminate between naturally occurring variation in data over time (noise, non-random or special cause variation) and variation that is the result of changes to a process (signal, random or common cause variation).
 
-Statistical process control (SPC) comprises a set of tools including control charts, which help to distinguish signal (non-random or special cause variation) from noise (random or common cause variation) in time series data.
+Statistical process control (SPC) comprises a set of tools including control charts, which help to distinguish signal from noise in time series data.
 
 ## Statistical process control charts
 
 SPC charts are point-and-line graphs showing a measure over time and employing statistical tests for identification of non-random variation.
 
-SPC charts are based on the assumption that, if the process in question is random, that is, containing only noise, the data points will be randomly distributed around the process centre expressed by the mean or median and nearly all of them will appear between limits estimating the random variation inherent in the process. These limits are called control limits and are added as horizontal lines to the chart. Control limits are usually positioned at a distance of +/- 3 times the estimated within sample standard deviation (SD) from the centre line. Consequently, control limits are also referred to as 3-sigma limits. Fig 1A shows an example of a process containing random variation only.
+SPC charts are based on the assumption that, if the process in question is random the data points will be randomly distributed around the process centre expressed by the mean or median and nearly all of them will appear between limits estimating the random variation inherent in the process. These limits are called control limits and are added as horizontal lines to the chart. Control limits are usually positioned at a distance of $\pm{3}$ times the estimated within sample standard deviation (SD) from the centre line. Consequently, control limits are also referred to as 3-sigma limits. Fig 1A shows an example of a process containing random variation only.
 
 ```{r}
 p0
@@ -148,9 +146,9 @@ Since quality improvement often happens gradually or in smaller steps, the focus
 
 ### The Western Electric rules
 
-The Best known tests for non-random variation are probably the Western Electric (WE) rules described in the Statistical Quality Control Handbook from 1956 [6]. The WE rules consist of four simple tests that can be applied to control charts by visual inspection to identify unusual, that is, non-random, patterns in the distribution of data points relative to the control and centre lines:
+The Best known tests for non-random variation are probably the Western Electric (WE) rules described in the Statistical Quality Control Handbook from 1956 [6]. The WE rules consist of four simple tests that can be applied to control charts by visual inspection to identify non-random patterns in the distribution of data points relative to the control and centre lines:
 
-1. **One** or more points beyound a 3-sigma limit.
+1. **One** or more points beyond a 3-sigma limit.
 
 2. **Two out of three** successive points beyond a 2-sigma limit (two thirds of the distance between the centre line and the control line).
 
@@ -172,13 +170,13 @@ Critical values for longest run and number of crossings may be calculated using 
 
 The Anhoej rules were developed to reliably identify persistent shifts in data over time, and while they are useless in detecting transient shifts and slower than the WE rules in detecting larger shifts, they have some advantages:
 
-* The Anhoej rules do not depend on sigma limits, and when used with the median as the centre line they are agnostic to the theoretical distribution of data. Therefore they are useful as stand-alone rules with run charts, which are a lot easier to construct than control charts and require pen and paper only.
+* The Anhoej rules do not depend on sigma limits, and when used with the median as the centre line they are agnostic to assumptios regarding the theoretical distribution of data. Therefore they are useful as stand-alone rules with run charts, which are a lot easier to construct than control charts and require pen and paper only.
 
 * The Anhoej rules adapt dynamically to the number of available data points and can be applied to charts with as few as 10 and up to indefinitely many data points without loosing sensitivity and specificity.
 
 ### Other rules
 
-Many, many more tests and rule sets have been developed, and in practice there is no limit to the number of ways one could identify unusual patterns in data. However, as the number of applied tests increase, the risk of false positive results increase as well, and especially some some popular rule sets have proven to be at best useless in practice [9, 8].
+Many, many more tests and rule sets have been developed, and in practice there is no limit to the number of ways one could identify non-random patterns in data. However, as the number of applied tests increase, the risk of false positive results increase as well, and some popular rule sets have proven to be at best useless in practice [9, 8].
 
 For these reasons, the decision on which and how many rules to use in a given situation should be made deliberately, preferably before data collection begins, and based on one's understanding of the processes involved. This study is an attempt to add objectivity and reproducibility to this selection process.
 
@@ -188,26 +186,28 @@ Likelihood ratios tell how well (clinical) tests discriminate between the presen
 
 Likelihood ratios are closely related to other measures of diagnostic value like sensitivity, specificity, and predictive values. But in contrast to these, likelihood ratios are independent of the prevalence of the conditions in the population of interest.
 
-A detailed explanation of likelihood ratios may be found in my previous paper on this subject [8].
+A detailed explanation of likelihood ratios is provided in my previous paper on this subject [8].
 
 In short, the positive likelihood ratio (LR+) is the true positive rate (TP) divided by the false positive rate (FP). LR+ greater than 10 is considered strong evidence that the condition being tested for is present. The negative likelihood ratio (LR-) is the false negative rate (FN) divided by the true negative rate (TN). LR- smaller than 0.1 is considered strong evidence against the condition [11].
 
 * LR+ = TP / FP
 * LR- = FN / TN
 
+Thus, for any test, the higher LR+ and the lower LR-, the better the test.
+
 ## Study aim
 
-The aim of this study was to quantify and compare the diagnostic value of the Western Electric control chart rules for detection of non-random variation in time series data in order to make recommendations for their application. In addition, I wanted to compare the performance of the WE rules and the Anhoej rules.
+The aim of this study is to quantify and compare the diagnostic value of the Western Electric control chart rules for detection of non-random variation in time series data in order to make recommendations for their application. In addition, I want to compare the performance of the WE rules and the Anhoej rules.
 
 # Methods
 
-For the purpose of this study, I used the R programming language v. 3.4.3 [12] to simulate time series data from random normal numbers with known sample averages and a fixed sample standard deviation (SD = 1). I developed custom functions for calculating likelihood ratios and for testing time series data for non-random variation using the WE zone rules and the Anhoej runs rules. For data manipulation and plotting, I used functions from the tidyverse package v. 1.2.1. [13].
+I use the R programming language v. 3.4.3 [12] to simulate time series data from random normal numbers with known sample averages and a fixed sample standard deviation (SD = 1). I have developed custom functions for calculating likelihood ratios and for testing time series data for non-random variation using the WE zone rules and the Anhoej runs rules. For data manipulation and plotting, I use functions from the tidyverse package v. 1.2.1. [13].
 
-To investigate the effect of series length (number of data points) and shift size (sample average) on the diagnostic value of different rules, 10,000 time series were simulated for each combination of series length (10, 12, ..., 40 data points) and shift size (0, 0.2, ..., 3.0 SD units). In total 2,560,000 time series were simulated and tested in relation to a fixed set of centre line and sigma limits of 0 +/- 1, 2, and 3 SD.
+To investigate the effect of series length (number of data points) and shift size (sample average) on the diagnostic value of different rules, 10,000 time series are simulated for each combination of series length (10, 12, ..., 40 data points) and shift size (0, 0.2, ..., 3.0 SD units). In total 2,560,000 time series are simulated and tested in relation to a fixed set of centre line and sigma limits of 0 +/- 1, 2, and 3 SD.
 
-For each series the proportions of true and false positive and negative results were calculated for selected combinations of tests. Positive and negative likelihood ratios were calculated for a shift size of 2 SD and series lengths of 10, 20, and 40 data points respectively.
+For each series the proportions of true or false positive and negative results respectively are calculated for selected combinations of tests. Positive and negative likelihood ratios are calculated for a shift size of 2 SD and series lengths of 10, 20, and 40 data points respectively.
 
-The R source code is available as supplementary material to this article [S1 R source].
+The R source code is available at https://github.com/anhoej/spc_diagnostics.
 
 # Results
 
@@ -240,8 +240,9 @@ Other things being equal, the value of a positive test decreases while the value
 
 # Discussion
 
-To my knowledge, this is the first study to investigate and quantify the value of the Western Electric rules using likelihood ratios on simulated time series data. 
-Traditionally, the diagnostic properties of SPC charts have been described using the average run length (ARL) measure, which is the average number of data points expected until a rule signals non-random variation. ARLs may be calculated for in-control and out-of-control conditions, where in- and out-of-control means random and non-random variation respectively provided that the theoretical distribution of data and the nature of the out-of-control condition are known [3].  ARLs are comparable to sensitivity and specificity measures traditionally used in health sciences in that they express the chance of having a positive test given the condition being present or absent? Likewise, power functions (Fig 2) and risk of false alarms (Fig 3) are commonly used to describe the value of SPC rules [3].
+To my knowledge, this is the first study to investigate and quantify the value of the Western Electric rules using likelihood ratios on simulated time series data.
+
+Traditionally, the diagnostic properties of SPC charts have been described using the average run length (ARL) measure, which is the average number of data points expected until a rule signals non-random variation. ARLs may be calculated for in-control and out-of-control conditions, where in- and out-of-control means random and non-random variation respectively provided that the theoretical distribution of data and the nature of the out-of-control condition are known [3].  ARLs are comparable to sensitivity and specificity measures traditionally used in health sciences in that they express the chance of having a positive test given the condition being present or absent? Likewise, power functions (Fig 2) and risk of false alarm rates (Fig 3) are commonly used to describe the value of SPC rules [3].
 
 However, like sensitivity and specificity, ARLs and power functions do not answer the questions of interest for the practical use of a test: given a test result, what is the chance that this result truly reflects the presence or absence of the condition?
 
@@ -249,7 +250,7 @@ Predictive values are alternative measures of diagnostic properties, which are d
 
 Likelihood ratios are easy to compute provided one has access to test results together with information on the true presence or absence of the condition of interest for each test. With the ubiquity of personal computers and free, open source software, large datasets are easily simulated for studies like this comparing known outcomes to combinations of different tests under different conditions.
 
-Likelihood ratios are also easy to understand: given a specific test result, how many times more (or less) likely is it that the condition is present? For example, in a control chart with 10 data points that tests positive on WE rule 1, a shift in the order of 2 SD is about 30 times more likely than no shift. If the same chart tests negative on WE rule 1, a shift of 2 SD is about 5 times (1 / 0.2) *less* likely than no shift (Fig 4).
+Likelihood ratios are also easy to understand: given a specific test result, how many times more (or less) likely is it that the condition is present? For example, in a control chart with 10 data points that tests positive on WE rule 1, a shift in the order of 2 SD is about 30 times more likely than no shift. If the same chart tests negative on WE rule 1, a shift of 2 SD is about 5 times (1 / 0.2) less likely than no shift (Fig 4).
 
 This study has two important limitations. First, the results are not to be extrapolated outside the conditions being tested. Second, since the results come from simulated data series, they should not be taken as exact values rather than indicators of how different conditions affect the diagnostic value of SPC charts.
 
@@ -257,11 +258,11 @@ Regarding extrapolating the results: This study was designed to specifically inv
 
 In my practice (hospital infections, drug usage, procedure compliance, etc.), sudden shifts are less common than long term trends, waves, and individual outliers. Trends and waves are often identified by the Anhoej rules long before any of the WE rules signal. Outliers are often picked up quickly by WE rule 1. However, to quantify the diagnostic value of SPC charts for other patterns, one must design studies for the specific purpose.
 
-Regarding the use of simulations and in extension of the previous paragraph: No simulated data can truly reflect the properties of real life data, and the results should be interpreted cautiously. Specifically, sudden, persistent shift of exactly 2 SD that does not change over time, as used in my model, may never happen in reality, and my results are merely suggestive of what is expected to happen when data series grow long and more and more tests are applied.
+Regarding the use of simulations and in extension of the previous paragraph: No simulated data can truly reflect the properties of real life data, and the results should be interpreted cautiously. Specifically, sudden, persistent shift of exactly 2 SD that does not change over time, as used in my model, may never happen in reality, and my results are merely suggestive of what is expected to happen when data series grow longer and more and more tests are applied.
 
 # Conclusions
 
-This study confirmed that likelihood ratios are useful measures of the diagnostic value of SPC rules. The Western Electric rules 1-4 perform very well with short data series (< 20 data points). For longer data series, the Anhoej rules alone or in combination with the WE rule 1 may be a better choice. Most importantly, the choice of which and how many rules to apply in a given situation should be made deliberately depending on the specific purpose of the SPC analysis and the number of available data points.
+This study confirms that likelihood ratios are useful measures of the diagnostic value of SPC rules. The Western Electric rules 1-4 perform very well with short data series (< 20 data points). For longer data series, the Anhoej rules alone or in combination with the WE rule 1 may be a better choice. Most importantly, the choice of which and how many rules to apply in a given situation should be made deliberately depending on the specific purpose of the SPC analysis and the number of available data points.
 
 All other things being equal, the more data points, the fewer rules should be applied if one wants to maintain satisfactory values of positive tests. On the other hand if the purpose of the SPC analysis is to exclude non-random variation with a high degree of certainty, and if the cost of false positive tests is low, more rules may be useful.
 
@@ -269,26 +270,26 @@ All other things being equal, the more data points, the fewer rules should be ap
 
 1. Health Foundation. Evidence scan: Improvement science. Health Foundation 2011. Available from: http://www.health.org.uk/publication/improvement-science.
 
-1. Glasziou P, Ogrinc G, Goodman S. Can evidence-based medicine and clinical quality improvement learn from each other? doi:10.1136/bmjqs.2010.046524.
+2. Glasziou P, Ogrinc G, Goodman S. Can evidence-based medicine and clinical quality improvement learn from each other? doi:10.1136/bmjqs.2010.046524.
 
-1. Montgomery DC. Introduction to Statistical Quality Control. 6th ed. USA: John Wiley & Sons; 2009.
+3. Montgomery DC. Introduction to Statistical Quality Control. 6th ed. USA: John Wiley & Sons; 2009.
 
-1. Mohammed MA, Worthington P, Woodall WH. Plotting basic control charts: tutorial notes for healthcare practitioners. doi:10.1136/qshc.2004.012047.
+4. Mohammed MA, Worthington P, Woodall WH. Plotting basic control charts: tutorial notes for healthcare practitioners. doi:10.1136/qshc.2004.012047.
 
-1. Wheeler DJ. Understanding Variation -- The Key to Managing Chaos. 2nd ed. Knoxville: SPC Press; 2000.
+5. Wheeler DJ. Understanding Variation -- The Key to Managing Chaos. 2nd ed. Knoxville: SPC Press; 2000.
 
-1. Western Electric Company. Statistical Quality Control Handbook. 2nd ed. Easton: Mack Printing Company; 1958.
+6. Western Electric Company. Statistical Quality Control Handbook. 2nd ed. Easton: Mack Printing Company; 1958.
 
-1. Anhøj J, Olesen AV. Run Charts Revisited: A Simulation Study of Run Chart Rules for Detection of Non-Random Variation in Health Care Processes. doi:10.1371/journal.pone.0113825.
+7. Anhøj J, Olesen AV. Run Charts Revisited: A Simulation Study of Run Chart Rules for Detection of Non-Random Variation in Health Care Processes. doi:10.1371/journal.pone.0113825.
 
-1. Anhøj J. Diagnostic Value of Run Chart Analysis: Using Likelihood Ratios to Compare Run Chart Rules on Simulated Data Series. doi:10.1371/journal.pone.0121349.
+8. Anhøj J. Diagnostic Value of Run Chart Analysis: Using Likelihood Ratios to Compare Run Chart Rules on Simulated Data Series. doi:10.1371/journal.pone.0121349.
 
-1. Davis RB, Woodall WH. Performance of the Control Chart Trend Rule Under Linear Shift. Journal of Quality Technology 1988;20: 260-262.
+9. Davis RB, Woodall WH. Performance of the Control Chart Trend Rule Under Linear Shift. Journal of Quality Technology 1988;20: 260-262.
 
-1. Attia J. Moving beyond sensitivity and specificity: using likelihood ratios to help interpret diagnostic tests. Australian Prescriber 2003;26: 111-113.
+10. Attia J. Moving beyond sensitivity and specificity: using likelihood ratios to help interpret diagnostic tests. Australian Prescriber 2003;26: 111-113.
 
-1. Deeks JJ, Altman DG. Diagnostic tests 4: likelihood ratios. BMJ 2004;329: 168-169.
+11. Deeks JJ, Altman DG. Diagnostic tests 4: likelihood ratios. BMJ 2004;329: 168-169.
 
-1. R Core Team. R: A Language and Environment for Statistical Computing. Version 3.4.3 [software]. Available from: https://www.R-project.org/
+12. R Core Team. R: A Language and Environment for Statistical Computing. Version 3.4.3 [software]. Available from: https://www.R-project.org/
 
-1. Wickham H. tidyverse: Easily Install and Load the 'Tidyverse'. R package. Version 1.2.1 [software]. Available from: https://CRAN.R-project.org/package=tidyverse
+13. Wickham H. tidyverse: Easily Install and Load the 'Tidyverse'. R package. Version 1.2.1 [software]. Available from: https://CRAN.R-project.org/package=tidyverse
