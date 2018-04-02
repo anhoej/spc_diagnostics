@@ -11,10 +11,13 @@
 #
 # Author: Jacob Anhøj 
 # Email: jacob@anhoej.net 
-# Date: 2018-03-24 
+# Date: 2018-04-02
 # Licence: GNU General Public Licence v. 3
 
 # Initialise and setup ----
+
+# Set recalc to TRUE if you want to rerun the simulations.
+recalc <- T
 
 # Load tidyverse package
 library(tidyverse)
@@ -23,9 +26,6 @@ library(tidyverse)
 fileprefix <- 'data/spc_diagnostics'
 datafile   <- paste0(fileprefix, '_data', '.rds')
 plotfile   <- paste0(fileprefix, '_plots', '.RData')
-
-# Set recalc to TRUE if you want to rerun the simulations.
-recalc <- F
 
 # If the data file doesn't exist, run calculations anyway.
 if(!file.exists(datafile))
@@ -57,15 +57,32 @@ diag.test <- function(x, y) {
 
 # SPC analysis
 zone.test <- function(x, z, n, m) {
-  x1 <- x > z
-  x2 <- x < -z
-  v1 <- v2 <- vector(length = length(x) - m)
-  for(i in 1:(length(x) - m + 1)) {
-    v1[i] <- sum(x1[i:(i + m - 1)])
-    v2[i] <- sum(x2[i:(i + m - 1)])
+  len <- length(x)
+  if (len < m) {
+    result <- (sum(x > z) > n - 1) | (sum(x < -z) > n - 1)
+  } else {
+    x1 <- x > z
+    x2 <- x < -z
+    v1 <- v2 <- vector(length = len - m + 1)
+    for (i in 1:(len - m + 1)) {
+      v1[i] <- sum(x1[i:(i + m - 1)])
+      v2[i] <- sum(x2[i:(i + m - 1)])
+    }
+    result <- max(v1, v2) > n - 1
   }
-  return(max(v1, v2) > n - 1)
+  return(result)
 }
+
+# zone.test <- function(x, z, n, m) {
+#   x1 <- x > z
+#   x2 <- x < -z
+#   v1 <- v2 <- vector(length = length(x) - m)
+#   for(i in 1:(length(x) - m + 1)) {
+#     v1[i] <- sum(x1[i:(i + m - 1)])
+#     v2[i] <- sum(x2[i:(i + m - 1)])
+#   }
+#   return(max(v1, v2) > n - 1)
+# }
 # zone.test <- function(x, z, n, m) {
 #   x1 <- x > z
 #   x2 <- x < -z
