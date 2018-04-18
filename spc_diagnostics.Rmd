@@ -93,7 +93,7 @@ plot(p3)
 dev.off()
 ```
 
-Jacob Anhøj<br />
+Jacob Anhøj (corresponding author)<br />
 Centre of Diagnostic Investigation, Rigshospitalet, University of Copenhagen, Denmark<br/>
 jacob@anhoej.net
 
@@ -106,11 +106,17 @@ Revision date: `r Sys.Date()`
 
 # Abstract
 
-The aim of this study is to quantify and compare the diagnostic value of The Western Electric statistical process control chart rules for detection of non-random variation in time series data in order to make recommendations for their application under different conditions.
+**Background**
+
+The aim of this study is to quantify and compare the diagnostic value of The Western Electric statistical process control chart rules and the Anhoej rules for detection of non-random variation in time series data in order to make recommendations for their application under different conditions.
+
+**Methods**
 
 Control charts are point-and-line graphs showing a measure over time and employing statistical tests for identification of non-random variation.
 
-Numerous tests have been developed to identify non-random variation. In this study, we investigate the diagnostic value of the four Western Electric Rules and the two Anhoej rules using simulated time series data with and without non-random variation introduced as shifts in process centre over time. The primary outcome is likelihood ratios of combined tests. Likelihood ratios are useful measures of a test's ability to discriminate between the true presence or absence of a specific condition.
+In this study we use simulated time series data with and without non-random variation introduced as shifts in process centre over time. The primary outcome is likelihood ratios of combined tests. Likelihood ratios are useful measures of a test's ability to discriminate between the true presence or absence of a specific condition.
+
+**Results and conclusions**
 
 This study confirms that likelihood ratios are useful measures of the diagnostic value of control chart rules. The Western Electric rules 1-4 combined perform very well with short data series (< 20 data points). For longer data series, the Anhoej rules alone or in combination with the WE rule 1 may be a better choice. Most importantly, the choice of which and how many rules to apply in a given situation should be made deliberately depending on the specific purpose of the analysis.
 
@@ -134,7 +140,7 @@ SPC charts are based on the assumption that, if the process in question is rando
 # p0
 ```
 
-> Fig 1. Example control charts. A: random variation. B: Non-random variation caused by a large, possibly transient, shift in data identified by one data point being outside the upper control limit. C: Non-random variation caused by a sustained moderate shift in data identified by an unusually long run of 13 data points below the centre line (WE rule 4 and Anhoej rule 1) and unusually few crossing (Anhoej rule 2). See text for details.
+> Fig 1. Example control charts. A: random variation. B: Non-random variation caused by a large, possibly transient, shift in data identified by one data point being outside the upper control limit. C: Non-random variation caused by a sustained moderate shift in data identified by an unusually long run of 13 data points below the centre line (Western Electric rule 4 and Anhoej rule 1) and unusually few crossing (Anhoej rule 2). See text for details.
 
 The calculation of sigma limits depends on assumptions regarding the theoretical distribution of data, and many types of control charts exist for different types of measure and count data.
 
@@ -223,7 +229,7 @@ Figure 2 shows the probability of detecting a shift in data over time in relatio
 # p1
 ```
 
-> Fig 2. Sensitivity of control chart rules. we1 = Western Electric (WE) rule1, we12 = WE rule 1 or 2 etc. Anhoej = Anhoej rules. k = series length (number of data points).
+> Fig 2. Sensitivity of control chart rules. we1 = WE rule1, we12 = WE rule 1 or 2 etc. Anhoej = Anhoej rules. k = series length (number of data points).
 
 The intercepts in Figure 2 corresponding to no shift (SD = 0) indicate the probability of getting false positive tests when no shifts are present in data. The false positive rates are explored further in Figure 3, which shows that the risk of getting false positive tests also increases with increasing series lengths and number of tests combined The exception being the Anhoej rules, which fluctuate but stay below 10%.
 
@@ -274,7 +280,7 @@ All other things being equal, the more data points, the fewer rules should be ap
 
 # References
 
-1. Health Foundation. Evidence scan: Improvement science. Health Foundation 2011. Available from: http://www.health.org.uk/publication/improvement-science.
+1. Health Foundation. Evidence scan: Improvement science. Health Foundation 2011. Available from: http://www.health.org.uk/publication/improvement-science. Accessed April 18, 2018.
 
 2. Glasziou P, Ogrinc G, Goodman S. Can evidence-based medicine and clinical quality improvement learn from each other? BMJ Quality & Safety 2011;20:i13-i17. doi:10.1136/bmjqs.2010.046524.
 
@@ -296,6 +302,52 @@ All other things being equal, the more data points, the fewer rules should be ap
 
 11. Deeks JJ, Altman DG. Diagnostic tests 4: likelihood ratios. BMJ 2004;329: 168-169.
 
-12. R Core Team. R: A Language and Environment for Statistical Computing. Version 3.4.3 [software]. Available from: https://www.R-project.org/
+12. R Core Team. R: A Language and Environment for Statistical Computing. Version 3.4.3 [software]. Available from: https://www.R-project.org/. Accessed April 18, 2018.
 
-13. Wickham H. tidyverse: Easily Install and Load the 'Tidyverse'. R package. Version 1.2.1 [software]. Available from: https://CRAN.R-project.org/package=tidyverse
+13. Wickham H. tidyverse: Easily Install and Load the 'Tidyverse'. R package. Version 1.2.1 [software]. Available from: https://CRAN.R-project.org/package=tidyverse. Accessed April 18, 2018.
+
+# Abbreviations
+
+* SPC: statistical process control
+
+* WE: Western Electric
+
+* SD: Standard deviation
+
+# Declarations
+
+## Ethics approval and consent to participate
+
+Not applicable.
+  
+## Consent for publication
+
+Not applicable.
+
+## Availability of data and material
+
+All data generated or analysed during this study are included in this published article and its supplementary information files.
+
+## Competing interests
+
+The authors declare that they have no competing interests.
+
+## Funding
+
+This study received no funding
+
+## Authors' contributions
+
+JA and TWL 
+
+* made contributed to conception, design, acquisition of data, and analysis and interpretation of data;
+
+* was involved in writing and revising the manuscript;
+
+* gave final approval of the version to be published;
+
+* agreed to be accountable for all aspects of the work.
+
+## Acknowledgements
+
+Not applicable.
