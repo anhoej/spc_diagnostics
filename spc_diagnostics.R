@@ -9,15 +9,15 @@
 # The scripts was created with R v. 3.4.4 and depends on the tidyverse package 
 # v. 1.2.1
 #
-# Author: Jacob Anhøj 
+# Author: Jacob Anhøj & Tore Wentzel-Larsen
 # Email: jacob@anhoej.net 
-# Date: 2018-04-02
+# Date: 2018-04-18
 # Licence: GNU General Public Licence v. 3
 
 # Initialise and setup ----
 
 # Set recalc to TRUE if you want to rerun the simulations.
-recalc <- T
+recalc <- FALSE
 
 # Load tidyverse package
 library(tidyverse)

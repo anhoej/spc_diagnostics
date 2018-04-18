@@ -2,12 +2,18 @@
 title: 'Sense and sensibility: On the diagnostic value of control chart rules for
   detection of shifts in time series data'
 output:
-  # word_document:
-  #   fig_height: 5
-  #   reference_docx: arkiv/spc_diagnostics_template.docx
-  html_document:
-    dev: svg
-    fig_height: 6
+  word_document:
+    # fig_height: 5
+    reference_docx: arkiv/spc_diagnostics_template.docx
+  # pdf_document: default
+  # html_document:
+  #   dev: svg
+  #   fig_height: 6
+# geometry: margin=1in
+# classoption: a4paper
+# header-includes:
+#   - \usepackage[left]{lineno}
+#   - \linenumbers
 ---
 
 ```{r setup, include=FALSE}
@@ -39,63 +45,62 @@ p0 <- qicharts2::qic(x, y,
                      xlab = 'Time') +
   ggplot2::labs(title = NULL)
 
-# tiff('fig1.tiff', 
-#      width = 2250,
-#      height = 2250,
-#      res = 300,
-#      compression = 'lzw')
-# plot(p0)
-# dev.off()
+tiff('fig1.tiff',
+     width = 2250,
+     height = 2250,
+     res = 300,
+     compression = 'lzw')
+plot(p0)
+dev.off()
 ```
 
 ```{r fig2, results='hide', fig.cap='Fig 2: Sensitivity of control chart rules. we1 = Western Electric (WE) rule1, we12 = WE rule 1 and 2 etc. Anhoej = Anhoej rules. k = series length (number of data points).'}
 
 p1 <- p1 + ggplot2::labs(title = NULL) 
 
-# tiff('fig2.tiff', 
-#      width = 2250,
-#      height = 2250,
-#      res = 300,
-#      compression = 'lzw')
-# plot(p1)
-# dev.off()
+tiff('fig2.tiff',
+     width = 2250,
+     height = 2250,
+     res = 300,
+     compression = 'lzw')
+plot(p1)
+dev.off()
 ```
 
 ```{r fig3, results='hide', fig.cap='Fig 3: False alarm rates of control chart rules.', fig.height=4}
 
 p2 <- p2 + ggplot2::labs(title = NULL)
 
-# tiff('fig3.tiff', 
-#      width = 2250,
-#      height = 1300,
-#      res = 300,
-#      compression = 'lzw')
-# plot(p2)
-# dev.off()
+tiff('fig3.tiff',
+     width = 2250,
+     height = 1300,
+     res = 300,
+     compression = 'lzw')
+plot(p2)
+dev.off()
 ```
 
 ```{r fig4, results='hide', fig.cap='Fig 4: Likelihood ratios of control chart rules when a shift of 2 standard deviation units is present.'}
 
 p3 <- p3 + ggplot2::labs(title = NULL)
 
-# tiff('fig4.tiff', 
-#      width = 2250,
-#      height = 2250,
-#      res = 300,
-#      compression = 'lzw')
-# plot(p3)
-# dev.off()
+tiff('fig4.tiff',
+     width = 2250,
+     height = 2250,
+     res = 300,
+     compression = 'lzw')
+plot(p3)
+dev.off()
 ```
 
-Jacob Anhøj
+Jacob Anhøj<br />
+Centre of Diagnostic Investigation, Rigshospitalet, University of Copenhagen, Denmark<br/>
+jacob@anhoej.net
 
-Centre of Diagnostic Investigation, Rigshospitalet, University of Copenhagen, Denmark, jacob@anhoej.net
-
-Tore Wenzel-Larsen
-
-Centre for violence and traumatic stress studies, Oslo, Norway, tore.wentzellarsen@gmail.com
-
-Short title: Diagnostic value of control chart rules for time series data
+Tore Wentzel-Larsen<br />
+Centre for Child and Adolescent Mental Health, Eastern and Southern Norway &
+Centre for Violence and Traumatic Stress Studies, Oslo, Norway<br />
+tore.wentzellarsen@gmail.com
 
 Revision date: `r Sys.Date()`
 
@@ -125,8 +130,8 @@ SPC charts are point-and-line graphs showing a measure over time and employing s
 
 SPC charts are based on the assumption that, if the process in question is random the data points will be randomly distributed around the process centre expressed by the mean or median and nearly all of them will appear between limits estimating the random variation inherent in the process. These limits are called control limits and are added as horizontal lines to the chart. Control limits are usually positioned at a distance of $\pm{3}$ times the estimated within sample standard deviation (SD) from the centre line. Consequently, control limits are also referred to as 3-sigma limits. Fig 1A shows an example of a process containing random variation only.
 
-```{r}
-p0
+```{r, fig.height=7}
+# p0
 ```
 
 > Fig 1. Example control charts. A: random variation. B: Non-random variation caused by a large, possibly transient, shift in data identified by one data point being outside the upper control limit. C: Non-random variation caused by a sustained moderate shift in data identified by an unusually long run of 13 data points below the centre line (WE rule 4 and Anhoej rule 1) and unusually few crossing (Anhoej rule 2). See text for details.
@@ -212,10 +217,10 @@ The R source code is available at https://github.com/anhoej/spc_diagnostics.
 
 # Results
 
-Figure 2 shows the the probability of detecting a shift in data over time in relation to the shift size for different series lengths and combinations of control chart rules. Other things being equal, the probability increases with increasing series length and shift size. Also, the probability increases with the number of tests combined.
+Figure 2 shows the probability of detecting a shift in data over time in relation to the shift size for different series lengths and combinations of control chart rules. Other things being equal, the probability increases with increasing series length and shift size. Also, the probability increases with the number of tests combined.
 
 ```{r}
-p1
+# p1
 ```
 
 > Fig 2. Sensitivity of control chart rules. we1 = Western Electric (WE) rule1, we12 = WE rule 1 or 2 etc. Anhoej = Anhoej rules. k = series length (number of data points).
@@ -223,7 +228,7 @@ p1
 The intercepts in Figure 2 corresponding to no shift (SD = 0) indicate the probability of getting false positive tests when no shifts are present in data. The false positive rates are explored further in Figure 3, which shows that the risk of getting false positive tests also increases with increasing series lengths and number of tests combined The exception being the Anhoej rules, which fluctuate but stay below 10%.
 
 ```{r}
-p2
+# p2
 ```
 
 
@@ -232,7 +237,7 @@ p2
 Figure 4 illustrates the value of positive and negative test results using likelihood ratios for combinations of series lengths and tests when a shift of 2 SD is present in data. As mentioned, a better test is one with a large range, preferably with LR+ above 10 and LR- below 0.1.
 
 ```{r}
-p3
+# p3
 ```
 
 > Fig 4. Likelihood ratios of control chart rules when a shift of 2 standard deviation units is present.
@@ -271,19 +276,19 @@ All other things being equal, the more data points, the fewer rules should be ap
 
 1. Health Foundation. Evidence scan: Improvement science. Health Foundation 2011. Available from: http://www.health.org.uk/publication/improvement-science.
 
-2. Glasziou P, Ogrinc G, Goodman S. Can evidence-based medicine and clinical quality improvement learn from each other? doi:10.1136/bmjqs.2010.046524.
+2. Glasziou P, Ogrinc G, Goodman S. Can evidence-based medicine and clinical quality improvement learn from each other? BMJ Quality & Safety 2011;20:i13-i17. doi:10.1136/bmjqs.2010.046524.
 
 3. Montgomery DC. Introduction to Statistical Quality Control. 6th ed. USA: John Wiley & Sons; 2009.
 
-4. Mohammed MA, Worthington P, Woodall WH. Plotting basic control charts: tutorial notes for healthcare practitioners. doi:10.1136/qshc.2004.012047.
+4. Mohammed MA, Worthington P, Woodall WH. Plotting basic control charts: tutorial notes for healthcare practitioners. Qual Saf Health Care. 2008 Apr;17(2):137-45. doi:10.1136/qshc.2004.012047.
 
 5. Wheeler DJ. Understanding Variation -- The Key to Managing Chaos. 2nd ed. Knoxville: SPC Press; 2000.
 
 6. Western Electric Company. Statistical Quality Control Handbook. 2nd ed. Easton: Mack Printing Company; 1958. Available from: http://www.westernelectric.com/support-statistical-quality-control-handbook.html
 
-7. Anhøj J, Olesen AV. Run Charts Revisited: A Simulation Study of Run Chart Rules for Detection of Non-Random Variation in Health Care Processes. doi:10.1371/journal.pone.0113825.
+7. Anhøj J, Olesen AV. Run Charts Revisited: A Simulation Study of Run Chart Rules for Detection of Non-Random Variation in Health Care Processes. PLOS ONE 9(11): e113825. doi:10.1371/journal.pone.0113825.
 
-8. Anhøj J. Diagnostic Value of Run Chart Analysis: Using Likelihood Ratios to Compare Run Chart Rules on Simulated Data Series. doi:10.1371/journal.pone.0121349.
+8. Anhøj J. Diagnostic Value of Run Chart Analysis: Using Likelihood Ratios to Compare Run Chart Rules on Simulated Data Series. PLoS One. 2015 Mar 23;10(3):e0121349. doi:10.1371/journal.pone.0121349.
 
 9. Davis RB, Woodall WH. Performance of the Control Chart Trend Rule Under Linear Shift. Journal of Quality Technology 1988;20: 260-262.
 
