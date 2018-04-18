@@ -120,7 +120,7 @@ Over the past decade or so, the term "improvement science" has gained attention 
 
 In a systematic review The Health Foundation concludes that: "Improvement science is about finding out how to improve and make changes in the most effective way. It is about systematically examining the methods and factors that best work to facilitate quality improvement" [1].
 
-Following this, change and improvement are closely related in that improvement is always the result of change. However, not all changes result in improvement. In order to know that improvement is happening, we must be able to measure the quality characteristics of the processes we are trying to improve. As improvement always happens over time, time is an essential part of the analysis, and since measurement is subject to variation whether or not improvement is happening, the aim of the analysis is to discriminate between naturally occurring variation in data over time (noise, non-random or special cause variation) and variation that is the result of changes to a process (signal, random or common cause variation).
+Following this, change and improvement are closely related in that improvement is always the result of change. However, not all changes result in improvement. In order to know that improvement is happening, we must be able to measure the quality characteristics of the processes we are trying to improve. As improvement always happens over time, time is an essential part of the analysis, and since measurement is subject to variation whether or not improvement is happening, the aim of the analysis is to discriminate between naturally occurring variation in data over time (noise, random or common cause variation) and variation that is the result of changes to a process (signal, non-random or special cause variation).
 
 Statistical process control (SPC) comprises a set of tools including control charts, which help to distinguish signal from noise in time series data.
 
@@ -188,7 +188,7 @@ For these reasons, the decision on which and how many rules to use in a given si
 
 ## Likelihood ratios
 
-Likelihood ratios tell how well (clinical) tests discriminate between the presence and the absence of a specific conditions [10, 11]. In this study, we applied likelihood ratios to evaluate how well the WE rules are able to tell random variation from non-random variation in simulated time series.
+Likelihood ratios tell how well (clinical) tests discriminate between the presence and the absence of a specific condition [10, 11]. In this study, we applied likelihood ratios to evaluate how well the WE rules are able to tell random variation from non-random variation in simulated time series.
 
 Likelihood ratios are closely related to other measures of diagnostic value like sensitivity, specificity, and predictive values. But in contrast to these, likelihood ratios are independent of the prevalence of the conditions in the population of interest.
 
@@ -209,7 +209,7 @@ The aim of this study is to quantify and compare the diagnostic value of the Wes
 
 We use the R programming language v. 3.4.4 [12] to simulate time series data from random normal numbers with known sample averages and a fixed sample standard deviation (SD = 1). We developed custom functions for calculating likelihood ratios and for testing time series data for non-random variation using the WE zone rules and the Anhoej runs rules. For data manipulation and plotting, we use functions from the tidyverse package v. 1.2.1. [13].
 
-To investigate the effect of series length (number of data points) and shift size (sample average) on the diagnostic value of different rules, 10,000 time series are simulated for each combination of series length (10, 12, ..., 40 data points) and shift size (0, 0.2, ..., 3.0 SD units). In total 2,560,000 time series are simulated and tested in relation to a fixed set of centre line and sigma limits of 0 +/- 1, 2, and 3 SD.
+To investigate the effect of series length (number of data points) and shift size (sample average) on the diagnostic value of different rules, 10,000 time series are simulated for each combination of series length (10, 12, ..., 40 data points) and shift size (0, 0.2, ..., 3.0 SD units). In total 2,560,000 time series are simulated and tested in relation to a fixed set of centre line and sigma limits of $0 \pm{1, 2, 3}$SD.
 
 For each series the proportions of true or false positive and negative results respectively are calculated for selected combinations of tests. Positive and negative likelihood ratios are calculated for a shift size of 2 SD and series lengths of 10, 20, and 40 data points respectively.
 
