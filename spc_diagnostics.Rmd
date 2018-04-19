@@ -3,17 +3,10 @@ title: 'Sense and sensibility: On the diagnostic value of control chart rules fo
   detection of shifts in time series data'
 output:
   word_document:
-    # fig_height: 5
     reference_docx: arkiv/spc_diagnostics_template.docx
-  # pdf_document: default
   # html_document:
   #   dev: svg
   #   fig_height: 6
-# geometry: margin=1in
-# classoption: a4paper
-# header-includes:
-#   - \usepackage[left]{lineno}
-#   - \linenumbers
 ---
 
 ```{r setup, include=FALSE}
@@ -24,8 +17,7 @@ knitr::opts_chunk$set(echo = FALSE,
 load('data/spc_diagnostics_plots.RData')
 ```
 
-
-```{r fig1, results='hide', fig.cap='Fig 1: Example control charts. A: random variation. B: Non-random variation caused by a large, possibly transient, shift in data identified by one data point being outside the upper control limit. C: Non-random variation caused by a sustained moderate shift in data identified by an unusually long run of 13 data points below the centre line (WE rule 4 and Anhoej rule 1) and unusually few crossing (Anhoej rule 2)'}
+```{r fig1, results='hide'}
 
 set.seed(19)
 y1 <- y2 <- y3 <- rnorm(24)
@@ -54,7 +46,7 @@ plot(p0)
 dev.off()
 ```
 
-```{r fig2, results='hide', fig.cap='Fig 2: Sensitivity of control chart rules. we1 = Western Electric (WE) rule1, we12 = WE rule 1 and 2 etc. Anhoej = Anhoej rules. k = series length (number of data points).'}
+```{r fig2, results='hide'}
 
 p1 <- p1 + ggplot2::labs(title = NULL) 
 
@@ -67,7 +59,7 @@ plot(p1)
 dev.off()
 ```
 
-```{r fig3, results='hide', fig.cap='Fig 3: False alarm rates of control chart rules.', fig.height=4}
+```{r fig3, results='hide'}
 
 p2 <- p2 + ggplot2::labs(title = NULL)
 
@@ -80,7 +72,7 @@ plot(p2)
 dev.off()
 ```
 
-```{r fig4, results='hide', fig.cap='Fig 4: Likelihood ratios of control chart rules when a shift of 2 standard deviation units is present.'}
+```{r fig4, results='hide'}
 
 p3 <- p3 + ggplot2::labs(title = NULL)
 
@@ -93,13 +85,17 @@ plot(p3)
 dev.off()
 ```
 
-Jacob Anhøj (corresponding author)<br />
-Centre of Diagnostic Investigation, Rigshospitalet, University of Copenhagen, Denmark<br/>
+Jacob Anhøj (corresponding author)
+
+Centre of Diagnostic Investigation, Rigshospitalet, University of Copenhagen, Denmark
+
 jacob@anhoej.net
 
-Tore Wentzel-Larsen<br />
+Tore Wentzel-Larsen
+
 Centre for Child and Adolescent Mental Health, Eastern and Southern Norway &
-Centre for Violence and Traumatic Stress Studies, Oslo, Norway<br />
+Centre for Violence and Traumatic Stress Studies, Oslo, Norway
+
 tore.wentzellarsen@gmail.com
 
 Revision date: `r Sys.Date()`
@@ -134,13 +130,13 @@ Statistical process control (SPC) comprises a set of tools including control cha
 
 SPC charts are point-and-line graphs showing a measure over time and employing statistical tests for identification of non-random variation.
 
-SPC charts are based on the assumption that, if the process in question is random the data points will be randomly distributed around the process centre expressed by the mean or median and nearly all of them will appear between limits estimating the random variation inherent in the process. These limits are called control limits and are added as horizontal lines to the chart. Control limits are usually positioned at a distance of $\pm{3}$ times the estimated within sample standard deviation (SD) from the centre line. Consequently, control limits are also referred to as 3-sigma limits. Fig 1A shows an example of a process containing random variation only.
+SPC charts are based on the assumption that, if the process in question is random the data points will be randomly distributed around the process centre expressed by the mean or median and nearly all of them will appear between limits estimating the random variation inherent in the process. These limits are called control limits and are added as horizontal lines to the chart. Control limits are usually positioned at a distance of $\pm{3}$ times the estimated within sample standard deviation (SD) from the centre line. Consequently, control limits are also referred to as 3-sigma limits. Figure 1A shows an example of a process containing random variation only.
 
 ```{r, fig.height=7}
 # p0
 ```
 
-> Fig 1. Example control charts. A: random variation. B: Non-random variation caused by a large, possibly transient, shift in data identified by one data point being outside the upper control limit. C: Non-random variation caused by a sustained moderate shift in data identified by an unusually long run of 13 data points below the centre line (Western Electric rule 4 and Anhoej rule 1) and unusually few crossing (Anhoej rule 2). See text for details.
+> Figure 1. Example control charts. A: random variation. B: Non-random variation caused by a large, possibly transient, shift in data identified by one data point being outside the upper control limit. C: Non-random variation caused by a sustained moderate shift in data identified by an unusually long run of 13 data points below the centre line (Western Electric rule 4 and Anhoej rule 1) and unusually few crossing (Anhoej rule 2). See text for details.
 
 The calculation of sigma limits depends on assumptions regarding the theoretical distribution of data, and many types of control charts exist for different types of measure and count data.
 
@@ -152,7 +148,7 @@ Control chart theory is a vast area, and the interested reader is recommended to
 
 Non-random variation may take many forms depending on the nature of its underlying causes. 
 
-Originally, SPC charts were designed to identify sudden, larger (> 2 SD) and possibly transient shifts in data (outliers). For this purpose testing for one or more data points outside the control limits is sufficient (Fig 1B). However, using this test only, other types of non-random variation may go unnoticed for longer periods of time (Fig 1C).
+Originally, SPC charts were designed to identify sudden, larger (> 2 SD) and possibly transient shifts in data (outliers). For this purpose, testing for one or more data points outside the control limits is sufficient (Figure 1B). However, using this test only, other types of non-random variation may go unnoticed for longer periods of time (Figure 1C).
 
 Since quality improvement often happens gradually or stepwise, the focus of this study is the ability to identify persistent shifts in data over time suggesting significant and lasting process improvement or deterioration. For this purpose, a number of additional control chart tests (or rules) have been developed.
 
@@ -188,19 +184,19 @@ The Anhoej rules were developed to reliably identify persistent shifts in data o
 
 ### Other rules
 
-Many, many more tests and rule sets have been proposed, and in practice there is no limit to the number of ways one could identify non-random patterns in data. However, as the number of applied tests increase, the risk of false positive results increase as well, and some popular tests have proven to be at best useless in practice [9, 8].
+Many more tests and rule sets have been proposed, and in practice there is no limit to the number of ways one could identify non-random patterns in data. However, the more tests applied, the higher the risk of false positive results. Furthermore, some popular tests have proven to be at best useless in practice [8, 9].
 
-For these reasons, the decision on which and how many rules to use in a given situation should be made deliberately, preferably before data collection begins, and based on one's understanding of the processes involved. This study is an attempt to add objectivity and reproducibility to this selection process.
+For these reasons, the decision on which and how many rules to use in a given situation should be made deliberately, preferably before data collection begins, and based on one's understanding of the processes involved. This study attempts to add objectivity and reproducibility to this selection process.
 
 ## Likelihood ratios
 
-Likelihood ratios tell how well (clinical) tests discriminate between the presence and the absence of a specific condition [10, 11]. In this study, we applied likelihood ratios to evaluate how well the WE rules are able to tell random variation from non-random variation in simulated time series.
+Likelihood ratios tell how well (clinical) tests discriminate between the presence and the absence of a specific condition [10, 11]. In this study, we apply likelihood ratios to evaluate how well the WE rules are able to tell random variation from non-random variation in simulated time series.
 
-Likelihood ratios are closely related to other measures of diagnostic value like sensitivity, specificity, and predictive values. But in contrast to these, likelihood ratios are independent of the prevalence of the conditions in the population of interest.
+Likelihood ratios are closely related to other measures of diagnostic value such as sensitivity, specificity, and predictive values. But in contrast to these, likelihood ratios are independent of the prevalence of the conditions in the population of interest.
 
-The use of likelihood ratios to examine the diagnostic value of run chart rules is explained in a previous paper on this subject [8].
+The use of likelihood ratios to examine the diagnostic value of run chart rules is explained in detail in a previous paper on this subject [8].
 
-In short, the positive likelihood ratio (LR+) is the true positive rate (TP) divided by the false positive rate (FP). LR+ greater than 10 is considered strong evidence that the condition being tested for is present. The negative likelihood ratio (LR-) is the false negative rate (FN) divided by the true negative rate (TN). LR- smaller than 0.1 is considered strong evidence against the condition [11].
+In short, the positive likelihood ratio (LR+) is the true positive proportion (TP) divided by the false positive proportion (FP). LR+ greater than 10 is considered strong evidence that the condition being tested for is present. The negative likelihood ratio (LR-) is the false negative proportion (FN) divided by the true negative proportion (TN). LR- smaller than 0.1 is considered strong evidence against the condition [11].
 
 $$ LR+=TP/FP=sensitivity/(1-specificity) $$
 $$ LR-=FN/TN=(1-sensitivity)/specificity $$
@@ -213,9 +209,9 @@ The aim of this study is to quantify and compare the diagnostic value of the Wes
 
 # Methods
 
-We use the R programming language v. 3.4.4 [12] to simulate time series data from random normal numbers with known sample averages and a fixed sample standard deviation (SD = 1). We developed custom functions for calculating likelihood ratios and for testing time series data for non-random variation using the WE zone rules and the Anhoej runs rules. For data manipulation and plotting, we use functions from the tidyverse package v. 1.2.1. [13].
+We use the R programming language v. 3.4.4 [12] to simulate time series data from random normal numbers with known sample averages and a fixed sample standard deviation (SD = 1). We have developed custom functions for calculating likelihood ratios and for testing time series data for non-random variation using the WE zone rules and the Anhoej runs rules. For data manipulation and plotting, we use functions from the tidyverse package v. 1.2.1. [13].
 
-To investigate the effect of series length (number of data points) and shift size (sample average) on the diagnostic value of different rules, 10,000 time series are simulated for each combination of series length (10, 12, ..., 40 data points) and shift size (0, 0.2, ..., 3.0 SD units). In total 2,560,000 time series are simulated and tested in relation to a fixed set of centre line and sigma limits of $0 \pm{1, 2, 3}$SD.
+To investigate the effect of series length (number of data points) and shift size (sample average) on the diagnostic value of different rules, 10,000 time series are simulated for each combination of series length (10, 12, ..., 40 data points) and shift size (0, 0.2, ..., 3.0 SD units). In total 2,560,000 time series are simulated and tested in relation to a fixed set of centre line and sigma limits of $0 \pm{1, 2, 3}$ SD.
 
 For each series the proportions of true or false positive and negative results respectively are calculated for selected combinations of tests. Positive and negative likelihood ratios are calculated for a shift size of 2 SD and series lengths of 10, 20, and 40 data points respectively.
 
@@ -229,16 +225,15 @@ Figure 2 shows the probability of detecting a shift in data over time in relatio
 # p1
 ```
 
-> Fig 2. Sensitivity of control chart rules. we1 = WE rule1, we12 = WE rule 1 or 2 etc. Anhoej = Anhoej rules. k = series length (number of data points).
+> Figure 2. Sensitivity of control chart rules. we1 = WE rule1, we12 = WE rule 1 or 2 etc. Anhoej = Anhoej rules. k = series length (number of data points).
 
-The intercepts in Figure 2 corresponding to no shift (SD = 0) indicate the probability of getting false positive tests when no shifts are present in data. The false positive rates are explored further in Figure 3, which shows that the risk of getting false positive tests also increases with increasing series lengths and number of tests combined The exception being the Anhoej rules, which fluctuate but stay below 10%.
+The intercepts in Figure 2 corresponding to no shift (SD = 0) indicate the probability of getting false positive tests when no shifts are present in data. These false positive proportions are explored further in Figure 3, which shows that the risk of getting false positive tests also increases with increasing series lengths and number of tests combined The exception being the Anhoej rules, which fluctuate but stay below 10%.
 
 ```{r}
 # p2
 ```
 
-
-> Fig 3. False alarm rates of control chart rules.
+> Figure 3. False alarm rates of control chart rules.
 
 Figure 4 illustrates the value of positive and negative test results using likelihood ratios for combinations of series lengths and tests when a shift of 2 SD is present in data. As mentioned, a better test is one with a large range, preferably with LR+ above 10 and LR- below 0.1.
 
@@ -246,7 +241,7 @@ Figure 4 illustrates the value of positive and negative test results using likel
 # p3
 ```
 
-> Fig 4. Likelihood ratios of control chart rules when a shift of 2 standard deviation units is present.
+> Figure 4. Likelihood ratios of control chart rules when a shift of 2 standard deviation units is present.
 
 Other things being equal, the value of a positive test decreases while the value of a negative test increases with more tests and longer series. For short data series (k = 10), all combinations of rules perform well. Especially, if one needs to be able to exclude shifts in data with high reliability, the combination of WE rules 1-4 appear to be of high diagnostic value. For longer data series, the WE rule 1 and the Anhoej rules appear reliable and robust. One should be cautious when using combinations of multiple rules with longer data series as the values of positive tests decrease significantly (LR+ < 10).
 
@@ -254,7 +249,7 @@ Other things being equal, the value of a positive test decreases while the value
 
 To our knowledge, this is the first study to investigate and quantify the value of the Western Electric rules using likelihood ratios on simulated time series data.
 
-Traditionally, the diagnostic properties of SPC charts have been described using the average run length (ARL) measure, which is the average number of data points expected until a rule signals non-random variation. ARLs may be calculated for in-control and out-of-control conditions, where in- and out-of-control means random and non-random variation respectively provided that the theoretical distribution of data and the nature of the out-of-control condition are known [3].  ARLs are comparable to sensitivity and specificity measures traditionally used in health sciences in that they express the chance of having a positive test given the condition being present or absent. Likewise, power functions (Fig 2) and risk of false alarm rates (Fig 3) are commonly used to describe the value of SPC rules [3].
+Traditionally, the diagnostic properties of SPC charts have been described using the average run length (ARL) measure, which is the average number of data points expected until a rule signals non-random variation. ARLs may be calculated for in-control and out-of-control conditions, where in- and out-of-control means random and non-random variation respectively, provided that the theoretical distribution of data and the nature of the out-of-control condition are known [3].  ARLs are comparable to sensitivity and specificity measures traditionally used in health sciences in that they express the chance of having a positive test given the condition being present or absent. Likewise, power functions (Figure 2) and risk of false alarm rates (Figure 3) are commonly used to describe the value of SPC rules [3].
 
 However, like sensitivity and specificity, ARLs and power functions do not answer the questions of interest for the practical use of a test: given a test result, what is the chance that this result truly reflects the presence or absence of the condition?
 
@@ -262,7 +257,7 @@ Predictive values are alternative measures of diagnostic properties and are desi
 
 Likelihood ratios are easy to compute provided one has access to test results together with information on the true presence or absence of the condition of interest for each test. With the ubiquity of personal computers and free, open source software, large datasets are easily simulated for studies like this comparing known outcomes to combinations of different tests under different conditions.
 
-Likelihood ratios are also easy to explain: given a specific test result, how many times more (or less) likely is it that the condition is present? For example, in a control chart with 10 data points that tests positive on WE rule 1, a shift in the order of 2 SD is about 30 times more likely than no shift. If the same chart tests negative on WE rule 1, a shift of 2 SD is about 5 times less likely than no shift (Fig 4).
+Likelihood ratios are also easy to explain: given a specific test result, how many times more (or less) likely is it that the condition is present? For example, in a control chart with 10 data points that tests positive on WE rule 1, a shift in the order of 2 SD is about 30 times more likely than no shift. If the same chart tests negative on WE rule 1, a shift of 2 SD is about 5 times less likely than no shift (Figure 4).
 
 This study has two important limitations. First, the results are not to be extrapolated outside the conditions being tested. Second, since the results come from simulated data series, they should not be taken as exact values rather than indicators of how different conditions affect the diagnostic value of SPC charts.
 
@@ -314,6 +309,20 @@ All other things being equal, the more data points, the fewer rules should be ap
 
 * SD: Standard deviation
 
+* LR+: Positive likelihood ratio
+
+* LR-: Negative likelihood ratio
+
+* TP: True positive proportion
+
+* FP: False positive proportion
+
+* TN: True negative proportion
+
+* FN: False negative proportion
+
+* ARL: Average run length
+
 # Declarations
 
 ## Ethics approval and consent to participate
@@ -326,7 +335,7 @@ Not applicable.
 
 ## Availability of data and material
 
-All data generated or analysed during this study are included in this published article and its supplementary information files.
+The datasets generated and/or analysed during the current study are available in the GitHub repository, https://github.com/anhoej/spc_diagnostics.
 
 ## Competing interests
 
@@ -340,7 +349,7 @@ This study received no funding
 
 JA and TWL 
 
-* made contributed to conception, design, acquisition of data, and analysis and interpretation of data;
+* contributed to conception, design, acquisition of data, and analysis and interpretation of data;
 
 * was involved in writing and revising the manuscript;
 
