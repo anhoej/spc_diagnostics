@@ -116,6 +116,15 @@ In this study we use simulated time series data with and without non-random vari
 
 This study confirms that likelihood ratios are useful measures of the diagnostic value of control chart rules. The Western Electric rules 1-4 combined perform very well with short data series (< 20 data points). For longer data series, the Anhoej rules alone or in combination with the WE rule 1 may be a better choice. Most importantly, the choice of which and how many rules to apply in a given situation should be made deliberately depending on the specific purpose of the analysis.
 
+# Keywords
+
+* Quality improvement
+* Statistical process control
+* Shewhart control charts
+* Run charts
+* Diagnostic tests
+* Likelihood ratios
+
 # Introduction
 
 Over the past decade or so, the term "improvement science" has gained attention and sparked debate [1]. In healthcare, which is our domain, improvement science is viewed by many as the natural successor -- or rather supplement -- to evidence based medicine. If evidence based medicine is about doing the right things then, improvement science is about doing things right, and one is meaningless without the other [2].
@@ -215,7 +224,7 @@ To investigate the effect of series length (number of data points) and shift siz
 
 For each series the proportions of true or false positive and negative results respectively are calculated for selected combinations of tests. Positive and negative likelihood ratios are calculated for a shift size of 2 SD and series lengths of 10, 20, and 40 data points respectively.
 
-The R source code is available at https://github.com/anhoej/spc_diagnostics.
+The R source code is available as Additional file 1.
 
 # Results
 
@@ -273,34 +282,6 @@ This study confirms that likelihood ratios are useful measures of the diagnostic
 
 All other things being equal, the more data points, the fewer rules should be applied if one wants to maintain satisfactory values of positive tests. On the other hand if the purpose of the SPC analysis is to exclude non-random variation with a high degree of certainty, and if the cost of false positive tests is low, more rules may be useful.
 
-# References
-
-1. Health Foundation. Evidence scan: Improvement science. Health Foundation 2011. Available from: http://www.health.org.uk/publication/improvement-science. Accessed April 18, 2018.
-
-2. Glasziou P, Ogrinc G, Goodman S. Can evidence-based medicine and clinical quality improvement learn from each other? BMJ Quality & Safety 2011;20:i13-i17. doi:10.1136/bmjqs.2010.046524.
-
-3. Montgomery DC. Introduction to Statistical Quality Control. 6th ed. USA: John Wiley & Sons; 2009.
-
-4. Mohammed MA, Worthington P, Woodall WH. Plotting basic control charts: tutorial notes for healthcare practitioners. Qual Saf Health Care. 2008 Apr;17(2):137-45. doi:10.1136/qshc.2004.012047.
-
-5. Wheeler DJ. Understanding Variation -- The Key to Managing Chaos. 2nd ed. Knoxville: SPC Press; 2000.
-
-6. Western Electric Company. Statistical Quality Control Handbook. 2nd ed. Easton: Mack Printing Company; 1958. Available from: http://www.westernelectric.com/support-statistical-quality-control-handbook.html
-
-7. Anhøj J, Olesen AV. Run Charts Revisited: A Simulation Study of Run Chart Rules for Detection of Non-Random Variation in Health Care Processes. PLOS ONE 9(11): e113825. doi:10.1371/journal.pone.0113825.
-
-8. Anhøj J. Diagnostic Value of Run Chart Analysis: Using Likelihood Ratios to Compare Run Chart Rules on Simulated Data Series. PLoS One. 2015 Mar 23;10(3):e0121349. doi:10.1371/journal.pone.0121349.
-
-9. Davis RB, Woodall WH. Performance of the Control Chart Trend Rule Under Linear Shift. Journal of Quality Technology 1988;20: 260-262.
-
-10. Attia J. Moving beyond sensitivity and specificity: using likelihood ratios to help interpret diagnostic tests. Australian Prescriber 2003;26: 111-113.
-
-11. Deeks JJ, Altman DG. Diagnostic tests 4: likelihood ratios. BMJ 2004;329: 168-169.
-
-12. R Core Team. R: A Language and Environment for Statistical Computing. Version 3.4.3 [software]. Available from: https://www.R-project.org/. Accessed April 18, 2018.
-
-13. Wickham H. tidyverse: Easily Install and Load the 'Tidyverse'. R package. Version 1.2.1 [software]. Available from: https://CRAN.R-project.org/package=tidyverse. Accessed April 18, 2018.
-
 # Abbreviations
 
 * SPC: statistical process control
@@ -335,7 +316,7 @@ Not applicable.
 
 ## Availability of data and material
 
-The datasets generated and/or analysed during the current study are available in the GitHub repository, https://github.com/anhoej/spc_diagnostics.
+The R source code of the simulation programme is available as Additional file 1.
 
 ## Competing interests
 
@@ -360,3 +341,34 @@ JA and TWL
 ## Acknowledgements
 
 Not applicable.
+# References
+
+1. Health Foundation. Evidence scan: Improvement science. Health Foundation 2011. Available from: http://www.health.org.uk/publication/improvement-science. Accessed April 18, 2018.
+
+2. Glasziou P, Ogrinc G, Goodman S. Can evidence-based medicine and clinical quality improvement learn from each other? BMJ Quality & Safety 2011;20:i13-i17. doi:10.1136/bmjqs.2010.046524.
+
+3. Montgomery DC. Introduction to Statistical Quality Control. 6th ed. USA: John Wiley & Sons; 2009.
+
+4. Mohammed MA, Worthington P, Woodall WH. Plotting basic control charts: tutorial notes for healthcare practitioners. Qual Saf Health Care. 2008 Apr;17(2):137-45. doi:10.1136/qshc.2004.012047.
+
+5. Wheeler DJ. Understanding Variation -- The Key to Managing Chaos. 2nd ed. Knoxville: SPC Press; 2000.
+
+6. Western Electric Company. Statistical Quality Control Handbook. 2nd ed. Easton: Mack Printing Company; 1958. Available from: http://www.westernelectric.com/support-statistical-quality-control-handbook.html
+
+7. Anhøj J, Olesen AV. Run Charts Revisited: A Simulation Study of Run Chart Rules for Detection of Non-Random Variation in Health Care Processes. PLOS ONE 9(11): e113825. doi:10.1371/journal.pone.0113825.
+
+8. Anhøj J. Diagnostic Value of Run Chart Analysis: Using Likelihood Ratios to Compare Run Chart Rules on Simulated Data Series. PLoS One. 2015 Mar 23;10(3):e0121349. doi:10.1371/journal.pone.0121349.
+
+9. Davis RB, Woodall WH. Performance of the Control Chart Trend Rule Under Linear Shift. Journal of Quality Technology 1988;20: 260-262.
+
+10. Attia J. Moving beyond sensitivity and specificity: using likelihood ratios to help interpret diagnostic tests. Australian Prescriber 2003;26: 111-113.
+
+11. Deeks JJ, Altman DG. Diagnostic tests 4: likelihood ratios. BMJ 2004;329: 168-169.
+
+12. R Core Team. R: A Language and Environment for Statistical Computing. Version 3.4.3 [software]. Available from: https://www.R-project.org/. Accessed April 18, 2018.
+
+13. Wickham H. tidyverse: Easily Install and Load the 'Tidyverse'. R package. Version 1.2.1 [software]. Available from: https://CRAN.R-project.org/package=tidyverse. Accessed April 18, 2018.
+
+# Additional file
+
+1. Additional file 1 (spc_diagnostics.R), text file including the R code used to simulate the data and perform the analysis reported in this study.
